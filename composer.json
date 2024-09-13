@@ -1,19 +1,15 @@
 {
   "name": "skeleton-app/database",
   "description": "SkeletonApp Module Database",
+  "type": "modules",
   "require": {
     "php": ">=8.2",
     "illuminate/database": "9.*",
     "doctrine/dbal" : "^4.0"
   },
-  "autoload": {
-    "psr-4": {
-      "Modules\\Database\\": "/modules/Database/"
-    }
-  },
   "extra": {
     "branch-alias": {
-      "dev-master": "master"
+      "dev-main": "dev"
     }
   },
   "minimum-stability": "dev",
