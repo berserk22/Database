@@ -47,7 +47,7 @@ class ServiceProvider extends Provider {
         $default['collation'] = $config['collation'];
         //$default['strict'] = $config['strict'];
         $default['options'] = [
-            PDO::ATTR_PERSISTENT => true, // Aktiviert persistente Verbindungen
+            PDO::ATTR_PERSISTENT => false,
         ];
 
         $container->set($this->getName()."::Migration::Collection", new MigrationCollection([]));
