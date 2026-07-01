@@ -72,12 +72,14 @@ class Panel implements IBarPanel {
         foreach($this->data as $var){
             $time += $var['time'];
             $row = $this->getBaseRow();
-            $return .= sprintf(
-                $row,
-                ++$cnt,
-                $var['time'],
-                $var['query']
-            );
+            if (isset($var['query'])){
+                $return .= sprintf(
+                    $row,
+                    ++$cnt,
+                    $var['time'],
+                    $var['query']
+                );
+            }
         }
         $this->time = $time;
         return $return;

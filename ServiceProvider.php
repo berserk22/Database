@@ -18,6 +18,7 @@ use Modules\Database\Console\Create;
 use Modules\Database\Console\Delete;
 use Modules\Database\Console\Update;
 use Monolog\Handler\Handler;
+use PDO;
 
 class ServiceProvider extends Provider {
 
@@ -44,13 +45,19 @@ class ServiceProvider extends Provider {
         $default['driver'] = $config['driver'];
         $default['charset'] = $config['charset'];
         $default['collation'] = $config['collation'];
+        //$default['strict'] = $config['strict'];
+        $default['options'] = [
+            PDO::ATTR_PERSISTENT => false,
+        ];
 
         $container->set($this->getName()."::Migration::Collection", new MigrationCollection([]));
         $capsule = new Manager();
 
-        $capsule->addConnection($default);
+        $tmpContainer = new Container();
 
-        $capsule->setEventDispatcher(new Dispatcher(new Container()));
+        $capsule->addConnection($default);
+        $capsule->setContainer($tmpContainer);
+        $capsule->setEventDispatcher(new Dispatcher($tmpContainer));
         $capsule->setAsGlobal();
         $capsule->connection()->enableQueryLog();
         $capsule->bootEloquent();

@@ -1,0 +1,17 @@
+{
+  "name": "skeleton-app/database",
+  "description": "SkeletonApp Module Database",
+  "type": "modules",
+  "require": {
+    "php": ">=8.2",
+    "illuminate/database": "9.*",
+    "doctrine/dbal" : "^4.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": false
+}
